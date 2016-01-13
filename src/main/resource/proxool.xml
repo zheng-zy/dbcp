@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxool-config>
+	<!-- <proxool>
+		<alias>localmysqldb</alias>
+		<driver-url><![CDATA[jdbc:mysql://127.0.0.1:3306/myoa?characterEncoding=utf-8]]></driver-url>
+		<driver-class>com.mysql.jdbc.Driver</driver-class>
+		<driver-properties>
+			<property name="user" value="root" />
+			<property name="password" value="666666" />
+		</driver-properties>
+		<house-keeping-sleep-time>900000</house-keeping-sleep-time>
+		<maximum-active-time>500000</maximum-active-time>
+		<maximum-connection-count>10</maximum-connection-count>
+		<minimum-connection-count>4</minimum-connection-count>
+		<house-keeping-test-sql>select 1</house-keeping-test-sql>
+		<prop key="hibernate.connection.release_mode">after_transaction</prop>
+	</proxool> -->
+	<proxool>
+		<alias>lytzats</alias>
+		<!-- <driver-url><![CDATA[jdbc:oracle:thin:@192.168.15.45:1521:lytzats]]></driver-url> -->
+		<driver-url><![CDATA[jdbc:oracle:thin:@192.168.14.13:1521:lytzats]]></driver-url>
+		<driver-class>oracle.jdbc.driver.OracleDriver</driver-class>
+		<driver-properties>
+			<property name="user" value="ats" />
+			<property name="password" value="ats" />
+		</driver-properties>
+		proxool自动侦察各个连接状态的时间间隔(毫秒),侦察到空闲的连接就马上回收,超时的销毁 默认30秒
+		<house-keeping-sleep-time>900000</house-keeping-sleep-time>
+		没有空闲连接可以分配而在队列中等候的最大请求数,超过这个请求数的用户连接就不会被接受
+		<maximum-new-connections>10</maximum-new-connections>
+		<maximum-active-time>500000</maximum-active-time>
+		最大连接数(默认5个),超过了这个连接数,再有请求时,就排在队列中等候,最大的等待请求数由maximum-new-connections决定
+		<maximum-connection-count>100</maximum-connection-count>
+		最小连接数(默认2个)
+		<minimum-connection-count>5</minimum-connection-count>
+		<simultaneous-build-throttle>100</simultaneous-build-throttle>
+		在使用之前测试 
+		<test-before-use>true</test-before-use> 
+		用于保持连接的测试语句 
+		<house-keeping-test-sql>select 1 from dual</house-keeping-test-sql>
+		<prop key="hibernate.connection.release_mode">after_transaction</prop>
+	</proxool>
+</proxool-config>
